@@ -211,7 +211,6 @@
         </button>
       </div>
 
-      <!-- Фактоиды внизу Hero -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/15 text-center">
         <div>
           <div class="font-serif text-3xl font-bold text-amber-200">1860</div>
@@ -1420,9 +1419,7 @@
     function openVideoTour() {
       const modal = document.getElementById('videoModal');
       const iframe = document.getElementById('videoTourIframe');
-      // Вставляем демонстрационное атмосферное видео
-      // При желании вы можете указать собственный YouTube / Rutube embed URL
-      iframe.src = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"; 
+      iframe.src = "https://rutube.ru/video/387bb4e981106b7d7a04504670c5ece6/?utm_source=embed&utm_medium=referral&utm_campaign=title&utm_content=387bb4e981106b7d7a04504670c5ece6&utm_term=postnicken.ru&t=1"; 
       modal.classList.remove('hidden');
     }
 
@@ -1472,7 +1469,6 @@
       showNotice("Адрес скопирован в буфер обмена!");
     }
 
-    // Всплывающее красивое уведомление (замена стандартного alert)
     function showNotice(msg) {
       const toast = document.createElement('div');
       toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-brand-forest text-brand-cream px-6 py-3 rounded-full shadow-2xl text-sm font-medium border border-brand-brass transition-all transform duration-300';
