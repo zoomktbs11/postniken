@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Постникен | Ретротерапия для души — Гостевой дом и A-frame в Калининградской области</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              cream: '#FBF9F4',
+              sand: '#F3EFE6',
+              parchment: '#EBE5D8',
+              terracotta: '#C15C3D',
+              terracottaDark: '#A6492D',
+              forest: '#243E36',
+              forestDark: '#172B25',
+              wood: '#3D2F28',
+              charcoal: '#1F2421',
+              brass: '#D4AF37'
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Inter"', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F3EFE6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #C15C3D;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #A6492D;
+    }
+    
+    .texture-paper {
+      background-color: #FBF9F4;
+      background-image: radial-gradient(#243E36 0.75px, transparent 0.75px), radial-gradient(#C15C3D 0.75px, #FBF9F4 0.75px);
+      background-size: 30px 30px;
+      background-position: 0 0, 15px 15px;
+      background-opacity: 0.03;
+    }
+
+    .retro-badge {
+      box-shadow: 3px 3px 0px rgba(36, 62, 54, 0.9);
+    }
+    
+    .modal-backdrop {
+      background-color: rgba(23, 43, 37, 0.85);
+      backdrop-filter: blur(6px);
+    }
+
+    /* Video aspect fix */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-brand-cream text-brand-charcoal font-sans antialiased selection:bg-brand-terracotta selection:text-white">
+
+  <!-- Верхняя полоса информации -->
+  <div class="bg-brand-forest text-brand-cream text-xs py-2 px-4 border-b border-brand-forestDark">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 font-medium">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Посёлок Заливное (Postnicken) • 25 мин от аэропорта Храброво • 5 мин до Куршского залива</span>
+      </div>
+      <div class="flex items-center gap-4 text-xs">
+        <span class="hidden md:inline text-amber-200">★ 5.0 на Яндекс Картах (180+ отзывов)</span>
+        <a href="tel:+79990000000" class="hover:text-brand-terracotta transition underline font-sans">+7 (999) 000-00-00</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Главное меню (Sticky Navbar) -->
+  <header class="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-md border-b border-brand-parchment shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        
+        <!-- Логотип -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-12 h-12 rounded-full bg-brand-forest flex items-center justify-center text-brand-cream font-serif text-2xl font-bold border-2 border-brand-terracotta shadow-md group-hover:scale-105 transition transform">
+            P
+          </div>
+          <div>
+            <span class="block font-serif text-2xl font-bold tracking-wider text-brand-forest uppercase">Постникен</span>
+            <span class="block text-[11px] tracking-widest text-brand-terracotta uppercase font-semibold">Ретротерапия для души</span>
+          </div>
+        </a>
+
+        <!-- Десктопные ссылки -->
+        <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-brand-wood">
+          <a href="#about" class="hover:text-brand-terracotta transition">О нас</a>
+          <a href="#houses" class="hover:text-brand-terracotta transition">Проживание</a>
+          <a href="#spa" class="hover:text-brand-terracotta transition">Баня и чаны</a>
+          <a href="#history" class="hover:text-brand-terracotta transition">История 1860</a>
+          <a href="#video-tour" class="hover:text-brand-terracotta transition">Видеотур</a>
+          <a href="#visa" class="hover:text-brand-terracotta transition">Виза в Постникен</a>
+          <a href="#contacts" class="hover:text-brand-terracotta transition">Как добраться</a>
+        </nav>
+
+        <!-- Кнопки в шапке -->
+        <div class="flex items-center gap-3">
+          <button onclick="openModal('visaModal')" class="hidden sm:inline-flex items-center gap-2 bg-brand-terracotta hover:bg-brand-terracottaDark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition shadow-md hover:shadow-lg active:scale-95">
+            <span>Получить визу</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+
+          <!-- Мобильное меню гамбургер -->
+          <button id="mobileMenuBtn" aria-label="Открыть меню" class="lg:hidden p-2 text-brand-forest rounded-lg hover:bg-brand-sand">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Мобильное выпадающее меню -->
+    <div id="mobileMenu" class="hidden lg:hidden bg-brand-sand border-b border-brand-parchment px-4 pt-3 pb-6 space-y-3 font-medium text-brand-wood">
+      <a href="#about" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">О нас</a>
+      <a href="#houses" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">Проживание (Пасторский дом и A-Frame)</a>
+      <a href="#spa" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">Бани и горячие чаны</a>
+      <a href="#history" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">История и реставрация</a>
+      <a href="#video-tour" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">Видеотур</a>
+      <a href="#visa" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">Виза в Постникен</a>
+      <a href="#contacts" onclick="closeMobileMenu()" class="block py-2 hover:text-brand-terracotta">Как добраться</a>
+      <button onclick="closeMobileMenu(); openModal('visaModal');" class="w-full mt-2 text-center bg-brand-terracotta text-white py-3 rounded-full font-semibold">
+        Оформить заявку на визу
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO СЕКЦИЯ -->
+  <section class="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden bg-brand-forestDark text-white">
+    
+    <!-- Фоновое изображение / видео -->
+    <!-- ЗАМЕТКА ДЛЯ ВАС: Замените фоновое изображение или видео в <video> / <img> на свой файл -->
+    <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay">
+      <img 
+        src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80" 
+        alt="Постникен Усадьба" 
+        class="w-full h-full object-cover"
+        onerror="this.src='https://placehold.co/1920x1080/243E36/FBF9F4?text=Postnicken+Estate'"
+      />
+    </div>
+
+    <!-- Тёплый градиентный оверлей -->
+    <div class="absolute inset-0 bg-gradient-to-t from-brand-forestDark via-brand-forestDark/60 to-transparent z-10"></div>
+
+    <div class="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 text-center py-20">
+      
+      <!-- Бейдж рейтинга и статуса -->
+      <div class="inline-flex items-center gap-2 bg-brand-cream/15 backdrop-blur-md border border-brand-cream/20 text-brand-cream px-4 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-6">
+        <span class="text-amber-300">★ ★ ★ ★ ★</span>
+        <span>Рейтинг 5.0 на Яндекс Картах</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-brand-terracotta"></span>
+        <span>Прусская история & Уют</span>
+      </div>
+
+      <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-brand-cream">
+        Ретротерапия для души <br class="hidden sm:inline">
+        <span class="italic font-normal text-amber-200">в сердце старинной Пруссии</span>
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-base sm:text-xl text-brand-parchment/90 font-light leading-relaxed mb-10">
+        Усадьба 1860 года, скандинавские А-фреймы у водного канала, баня на сваях с горячим чаном и тишина, о которой вы так долго мечтали.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#visa" class="w-full sm:w-auto bg-brand-terracotta hover:bg-brand-terracottaDark text-white px-8 py-4 rounded-full font-semibold text-lg transition duration-200 shadow-xl flex items-center justify-center gap-2">
+          <span>Подать на визу в Постникен</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+
+        <button onclick="openVideoTour()" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/30 text-white px-7 py-4 rounded-full font-semibold text-lg transition duration-200 flex items-center justify-center gap-3">
+          <div class="w-7 h-7 rounded-full bg-brand-terracotta flex items-center justify-center">
+            <svg class="w-3.5 h-3.5 translate-x-0.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <span>Видеотур по усадьбе</span>
+        </button>
+      </div>
+
+      <!-- Фактоиды внизу Hero -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-white/15 text-center">
+        <div>
+          <div class="font-serif text-3xl font-bold text-amber-200">1860</div>
+          <div class="text-xs text-brand-parchment/80 uppercase tracking-widest mt-1">Год постройки пасторского дома</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl font-bold text-amber-200">25 мин</div>
+          <div class="text-xs text-brand-parchment/80 uppercase tracking-widest mt-1">От аэропорта Храброво</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl font-bold text-amber-200">4 Дома</div>
+          <div class="text-xs text-brand-parchment/80 uppercase tracking-widest mt-1">Уютные A-Frame у воды</div>
+        </div>
+        <div>
+          <div class="font-serif text-3xl font-bold text-amber-200">100%</div>
+          <div class="text-xs text-brand-parchment/80 uppercase tracking-widest mt-1">Побег от городской суеты</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ИСТОРИЯ СОЗДАТЕЛЕЙ И ФИЛОСОФИЯ -->
+  <section id="about" class="py-20 sm:py-28 texture-paper border-b border-brand-parchment">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Фотоколлаж создателей -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white">
+            <!-- Плейсхолдер фото Олега и Ксении Барминых -->
+            <img 
+              src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=800&q=80" 
+              alt="Олег и Ксения Бармины в Постникене" 
+              class="w-full h-[450px] object-cover"
+              onerror="this.src='https://placehold.co/800x900/C15C3D/FFFFFF?text=Oleg+and+Ksenia+Barmin'"
+            />
+          </div>
+          <!-- Декоративная ретро-подложка -->
+          <div class="absolute -bottom-6 -right-6 w-full h-full bg-brand-sand border-2 border-brand-forest rounded-2xl -z-0"></div>
+          
+          <div class="absolute -bottom-4 left-6 z-20 bg-brand-forest text-brand-cream px-5 py-3 rounded-xl shadow-lg border border-brand-brass">
+            <p class="font-serif italic text-lg leading-tight">«Место, куда приезжают дышать»</p>
+            <p class="text-xs text-brand-parchment font-sans uppercase tracking-widest mt-1">— Олег и Ксения Бармины</p>
+          </div>
+        </div>
+
+        <!-- Текст истории -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 text-brand-terracotta text-sm font-semibold tracking-wider uppercase mb-3">
+            <span class="w-6 h-px bg-brand-terracotta"></span>
+            Добро пожаловать в семью
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest leading-tight mb-6">
+            Мы не строили просто отель. Мы спасли душу прусского Pfarrhaus.
+          </h2>
+
+          <div class="space-y-4 text-brand-wood text-base sm:text-lg leading-relaxed">
+            <p>
+              В 2020 году мы нашли полуразрушенный немецкий пасторский дом (Pfarrhaus) в посёлке Заливное. Здесь когда-то звучал орган местной кирхи 1370 года, росли вековые дубы и текли неспешные воды реки.
+            </p>
+            <p>
+              Вместо евроремонта мы бережно восстановили историческую прусскую черепицу, оригинальную кирпичную кладку, откопали старинную дренажную систему и наполнили интерьер винтажной мебелью, патефонами, книгами и теплом живого огня.
+            </p>
+            <p class="font-serif italic text-brand-terracottaDark text-xl font-semibold">
+              «Ретротерапия — это когда вы просыпаетесь под крик петухов, завариваете кофе в гейзерной турке, выходите на причал и понимаете: всё важное уже с вами».
+            </p>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4 items-center">
+            <a href="#history" class="inline-flex items-center gap-2 text-brand-forest hover:text-brand-terracotta font-semibold underline underline-offset-4 transition">
+              <span>Читать подробную хронику восстановления усадьбы</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: РАЗМЕЩЕНИЕ (ДОМ + А-ФРЕЙМЫ) -->
+  <section id="houses" class="py-20 sm:py-28 bg-brand-sand">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Ваш дом в Постникене</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest mt-2 mb-4">
+          Пространства для отдыха и вдохновения
+        </h2>
+        <p class="text-brand-wood text-base sm:text-lg">
+          Выберите исторический размах пасторского дома или уединённую романтику лесного A-Frame с панорамными окнами прямо на водный канал.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        
+        <!-- Карточка 1: Исторический дом (Pfarrhaus) -->
+        <div class="bg-brand-cream rounded-3xl overflow-hidden shadow-lg border border-brand-parchment flex flex-col group hover:shadow-2xl transition duration-300">
+          <div class="relative h-72 sm:h-80 overflow-hidden">
+            <!-- Плейсхолдер фото Дома Пастора -->
+            <img 
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" 
+              alt="Исторический пасторский дом Постникен" 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+              onerror="this.src='https://placehold.co/1000x600/3D2F28/FFFFFF?text=Historical+House+320m2'"
+            />
+            <div class="absolute top-4 left-4 bg-brand-forest text-brand-cream px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+              320 м² • До 14 гостей
+            </div>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-forest font-serif font-bold px-3.5 py-1 rounded-full text-sm">
+              Главная усадьба 1860 г.
+            </div>
+          </div>
+
+          <div class="p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-forest mb-3">
+                Исторический дом пастора (Pfarrhaus)
+              </h3>
+              <p class="text-brand-wood text-sm sm:text-base leading-relaxed mb-6">
+                Сердце нашего имения. Аутентичные высокие потолки, старинный камин, столовая с огромным дубовым столом и самоваром, библиотека редких книг, виниловый проигрыватель и просторные спальни в историческом и скандинавском стилях.
+              </p>
+              
+              <div class="grid grid-cols-2 gap-3 text-xs sm:text-sm text-brand-charcoal mb-6 border-y border-brand-parchment py-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> 5 тематических спален
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Просторный коворкинг & Wi-Fi
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Настоящая русская печь
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Терраса с видом на сад
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+              <div>
+                <span class="text-xs text-gray-500 uppercase tracking-wider block">Стоимость аренды</span>
+                <span class="font-serif text-2xl font-bold text-brand-terracotta">от 25 000 ₽ <span class="text-sm font-sans font-normal text-gray-600">/ сутки дом целиком</span></span>
+              </div>
+              <button onclick="openModal('visaModal', 'Исторический дом пастора')" class="w-full sm:w-auto bg-brand-forest hover:bg-brand-forestDark text-white px-6 py-3 rounded-full text-sm font-semibold transition active:scale-95 shadow">
+                Забронировать дом
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Карточка 2: Скандинавские А-фреймы -->
+        <div class="bg-brand-cream rounded-3xl overflow-hidden shadow-lg border border-brand-parchment flex flex-col group hover:shadow-2xl transition duration-300">
+          <div class="relative h-72 sm:h-80 overflow-hidden">
+            <!-- Плейсхолдер фото А-фреймов -->
+            <img 
+              src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1000&q=80" 
+              alt="A-Frame домики на воде Постникен" 
+              class="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+              onerror="this.src='https://placehold.co/1000x600/243E36/FFFFFF?text=A-Frame+Cabins'"
+            />
+            <div class="absolute top-4 left-4 bg-brand-terracotta text-white px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+              4 домика • 2–4 гостя
+            </div>
+            <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-forest font-serif font-bold px-3.5 py-1 rounded-full text-sm">
+              У самого канала
+            </div>
+          </div>
+
+          <div class="p-8 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-2xl sm:text-3xl font-bold text-brand-forest mb-3">
+                Треугольные А-Фреймы с террасой
+              </h3>
+              <p class="text-brand-wood text-sm sm:text-base leading-relaxed mb-6">
+                Современные треугольные дома в скандинавском стиле прямо у речного канала. Двухэтажное пространство с панорамным фасадом, персональным пирсом, гриль-зоной и возможностью прыгнуть в лодку прямо с крыльца.
+              </p>
+              
+              <div class="grid grid-cols-2 gap-3 text-xs sm:text-sm text-brand-charcoal mb-6 border-y border-brand-parchment py-4">
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Спальня на лофте под крышей
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Личная видовая терраса
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Оборудованная мини-кухня
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-brand-terracotta">✔</span> Лодка и сап-борды включены
+                </div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
+              <div>
+                <span class="text-xs text-gray-500 uppercase tracking-wider block">Стоимость аренды</span>
+                <span class="font-serif text-2xl font-bold text-brand-terracotta">от 8 500 ₽ <span class="text-sm font-sans font-normal text-gray-600">/ сутки</span></span>
+              </div>
+              <button onclick="openModal('visaModal', 'A-Frame домик у канала')" class="w-full sm:w-auto bg-brand-forest hover:bg-brand-forestDark text-white px-6 py-3 rounded-full text-sm font-semibold transition active:scale-95 shadow">
+                Выбрать А-Фрейм
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: БАНЯ НА СВАЯХ И ГОРЯЧИЕ ЧАНЫ -->
+  <section id="spa" class="py-20 sm:py-28 bg-brand-forest text-brand-cream relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 text-brand-terracotta text-sm font-bold tracking-widest uppercase">
+            <span class="w-6 h-px bg-brand-terracotta"></span>
+            Традиции парения
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold leading-tight">
+            Баня на сваях над водой и горячий сибирский банный чан
+          </h2>
+
+          <p class="text-brand-parchment/90 text-base sm:text-lg leading-relaxed font-light">
+            После насыщенной прогулки вдоль Куршского залива нет ничего лучше раскалённой дровяной печи, свежих дубовых веников, аромата калининградских луговых трав и погружения в тёплый чан под открытым звёздным небом.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center shrink-0 mt-1 font-serif font-bold text-xl">
+                1
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg text-white">Баня на сваях</h4>
+                <p class="text-sm text-brand-parchment/80">Остеклённая парная с панорамой речного русла, обливное ведро и прямой спуск для купания в воде.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center shrink-0 mt-1 font-serif font-bold text-xl">
+                2
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg text-white">Банный чан на дровах</h4>
+                <p class="text-sm text-brand-parchment/80">Подогревается живым огнём до 40–42°C. Завариваем хвою, можжевельник, цитрусовые и полевой сбор.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center shrink-0 mt-1 font-serif font-bold text-xl">
+                3
+              </div>
+              <div>
+                <h4 class="font-semibold text-lg text-white">Чайная церемония и самовар</h4>
+                <p class="text-sm text-brand-parchment/80">Настоящий русский самовар с баранками, местный мёд и травяные сборы от наших соседей-пасечников.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button onclick="openModal('visaModal', 'Баня и чаны')" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white px-8 py-3.5 rounded-full font-semibold transition shadow-lg">
+              Забронировать банный сеанс
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          <!-- Фотографии бани -->
+          <div class="space-y-4">
+            <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-brand-parchment/20">
+              <img 
+                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" 
+                alt="Горячий чан на открытом воздухе" 
+                class="w-full h-56 object-cover hover:scale-105 transition duration-500"
+                onerror="this.src='https://placehold.co/600x400/243E36/FFFFFF?text=Hot+Tub+Chan'"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-brand-parchment/20">
+              <img 
+                src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80" 
+                alt="Парная с панорамным окном" 
+                class="w-full h-72 object-cover hover:scale-105 transition duration-500"
+                onerror="this.src='https://placehold.co/600x600/C15C3D/FFFFFF?text=Steam+Sauna'"
+              />
+            </div>
+          </div>
+
+          <div class="space-y-4 pt-8">
+            <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-brand-parchment/20">
+              <img 
+                src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" 
+                alt="Травяной сбор и отдых" 
+                class="w-full h-72 object-cover hover:scale-105 transition duration-500"
+                onerror="this.src='https://placehold.co/600x600/172B25/FFFFFF?text=Herbal+Tea'"
+              />
+            </div>
+            <div class="rounded-2xl overflow-hidden shadow-lg border-2 border-brand-parchment/20">
+              <img 
+                src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" 
+                alt="Вид на закат над каналом" 
+                class="w-full h-56 object-cover hover:scale-105 transition duration-500"
+                onerror="this.src='https://placehold.co/600x400/3D2F28/FFFFFF?text=Sunset+Channel'"
+              />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ИСТОРИЯ И РЕСТАВРАЦИЯ УСАДЬБЫ -->
+  <section id="history" class="py-20 sm:py-28 texture-paper border-b border-brand-parchment">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mx-auto text-center mb-16">
+        <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Хроника возрождения</span>
+        <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest mt-2 mb-4">
+          Как умирающий пасторский дом обрёл вторую жизнь
+        </h2>
+        <p class="text-brand-wood text-base sm:text-lg">
+          Подлинная история кирпичик за кирпичиком. От заброшенного строения с протекающей крышей до уютного центра притяжения всей страны.
+        </p>
+      </div>
+
+      <!-- Временная шкала (Timeline) -->
+      <div class="relative border-l-2 border-brand-forest/20 ml-4 md:ml-32 space-y-12 pb-6">
+        
+        <!-- Событие 1 -->
+        <div class="relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-terracotta border-4 border-brand-cream group-hover:scale-125 transition"></div>
+          <span class="font-serif text-2xl font-bold text-brand-terracotta">1860 год</span>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-forest mt-1">Основание Pfarrhaus в деревне Постникен</h3>
+          <p class="text-brand-wood text-sm sm:text-base mt-2 max-w-2xl">
+            Рядом со старинной кирхой XIV века возведён каменный дом для местного лютеранского пастора и его семьи. Мощные балки из лиственницы, аутентичная немецкая черепица «бобровый хвост» и идеальный прусский дренаж вокруг фундамента.
+          </p>
+        </div>
+
+        <!-- Событие 2 -->
+        <div class="relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-forest border-4 border-brand-cream group-hover:scale-125 transition"></div>
+          <span class="font-serif text-2xl font-bold text-brand-forest">1946–2010 годы</span>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-forest mt-1">Советский период и запустение</h3>
+          <p class="text-brand-wood text-sm sm:text-base mt-2 max-w-2xl">
+            После войны посёлок переименован в Заливное. Здание использовалось под различные хозяйственные нужды, а в конце 90-х осталось без присмотра, постепенно зарастая бурьяном и теряя исторический облик.
+          </p>
+        </div>
+
+        <!-- Событие 3 -->
+        <div class="relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-terracotta border-4 border-brand-cream group-hover:scale-125 transition"></div>
+          <span class="font-serif text-2xl font-bold text-brand-terracotta">2020 год</span>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-forest mt-1">Приход Олега и Ксении Барминых</h3>
+          <p class="text-brand-wood text-sm sm:text-base mt-2 max-w-2xl">
+            Случайная поездка перевернула всё. Было решено выкупить усадьбу и спасти её. Стартовал легендарный блог реставрации, собравший десятки тысяч неравнодушных людей по всей России.
+          </p>
+        </div>
+
+        <!-- Событие 4 -->
+        <div class="relative pl-8 md:pl-12 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-600 border-4 border-brand-cream group-hover:scale-125 transition"></div>
+          <span class="font-serif text-2xl font-bold text-emerald-800">Наши дни</span>
+          <h3 class="font-serif text-xl sm:text-2xl font-bold text-brand-forest mt-1">Оазис ретротерапии, А-фреймы и тёплые встречи</h3>
+          <p class="text-brand-wood text-sm sm:text-base mt-2 max-w-2xl">
+            Сегодня Постникен — это место, где история гармонирует с премиальным комфортом. Гости приезжают со всей страны перезагрузиться, попариться в бане и почувствовать себя желанными гостями старинной усадьбы.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ВИДЕОТУР -->
+  <section id="video-tour" class="py-20 bg-brand-sand border-b border-brand-parchment">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      
+      <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Погружение в атмосферу</span>
+      <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest mt-2 mb-4">
+        Видеоэкскурсия по имению
+      </h2>
+      <p class="text-brand-wood text-base sm:text-lg mb-10 max-w-2xl mx-auto">
+        Посмотрите, как звучит утро в Постникене, как клубится пар над горячим чаном и как выглядит закат над рекой.
+      </p>
+
+      <!-- Интерактивный плеер превью -->
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white group cursor-pointer" onclick="openVideoTour()">
+        <img 
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80" 
+          alt="Превью видеотура Постникен" 
+          class="w-full h-[350px] sm:h-[480px] object-cover group-hover:scale-105 transition duration-700"
+          onerror="this.src='https://placehold.co/1200x600/243E36/FFFFFF?text=Click+to+Watch+Video+Tour'"
+        />
+        
+        <div class="absolute inset-0 bg-brand-forestDark/40 group-hover:bg-brand-forestDark/25 transition flex items-center justify-center">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-brand-terracotta group-hover:bg-brand-terracottaDark text-white flex items-center justify-center shadow-2xl group-hover:scale-110 transition duration-300">
+            <svg class="w-8 h-8 sm:w-10 sm:h-10 translate-x-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+
+        <div class="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white text-sm bg-black/40 backdrop-blur-md px-5 py-3 rounded-2xl">
+          <span class="font-medium">Атмосферный тур по усадьбе и А-фреймам (1080p Full HD)</span>
+          <span class="text-amber-200">Смотреть со звуком 🔊</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ИНТЕРАКТИВНАЯ «ВИЗА В ПОСТНИКЕН» -->
+  <section id="visa" class="py-20 sm:py-28 texture-paper">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-brand-cream rounded-3xl p-6 sm:p-12 shadow-2xl border-2 border-brand-parchment relative overflow-hidden">
+        
+        <!-- Марка / Печать в винтажном стиле -->
+        <div class="hidden sm:block absolute top-8 right-8 border-2 border-dashed border-brand-terracotta rounded-lg p-2 text-brand-terracotta rotate-6 select-none opacity-80">
+          <div class="text-[10px] tracking-widest uppercase font-bold text-center">ПОСТНИКЕН • 2026</div>
+          <div class="font-serif text-lg font-bold text-center">VISA APPROVED</div>
+          <div class="text-[9px] text-center">РЕТРОТЕРАПИЯ</div>
+        </div>
+
+        <div class="mb-8">
+          <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Индивидуальный отбор</span>
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-forest mt-1">
+            Заявка на визу в Постникен
+          </h2>
+          <p class="text-brand-wood text-sm sm:text-base mt-2">
+            Мы бережно сохраняем атмосферу тишины и добрососедства, поэтому знакомимся с каждым гостем до приезда. Заполните 5 простых вопросов, и мы свяжемся с вами в течение нескольких часов!
+          </p>
+        </div>
+
+        <!-- Индикатор прогресса квиза -->
+        <div class="mb-8">
+          <div class="flex justify-between items-center text-xs font-semibold uppercase tracking-wider text-brand-forest mb-2">
+            <span id="quizStepText">Шаг 1 из 5: Даты визита</span>
+            <span id="quizPercentText">20%</span>
+          </div>
+          <div class="w-full bg-brand-sand h-2.5 rounded-full overflow-hidden">
+            <div id="quizProgressBar" class="bg-brand-terracotta h-full rounded-full transition-all duration-500 w-1/5"></div>
+          </div>
+        </div>
+
+        <!-- Форма опросника -->
+        <form id="visaQuizForm" onsubmit="handleVisaSubmit(event)">
+          
+          <!-- ШАГ 1: ДАТЫ И ПЕРИОД -->
+          <div class="quiz-step space-y-5" data-step="1">
+            <label class="block text-base font-semibold text-brand-forest">
+              Когда вы хотите приехать к нам на ретротерапию?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Дата заезда</label>
+                <input type="date" required id="checkInDate" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta focus:outline-none">
+              </div>
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Дата выезда</label>
+                <input type="date" required id="checkOutDate" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta focus:outline-none">
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-xs text-brand-wood">Популярно:</span>
+              <button type="button" onclick="setQuickDates(2)" class="text-xs bg-brand-sand hover:bg-brand-parchment px-3 py-1 rounded-full text-brand-forest">Ближайшие выходные (2 ночи)</button>
+              <button type="button" onclick="setQuickDates(5)" class="text-xs bg-brand-sand hover:bg-brand-parchment px-3 py-1 rounded-full text-brand-forest">Отпуск на неделю (7 дней)</button>
+            </div>
+          </div>
+
+          <!-- ШАГ 2: ВЫБОР РАЗМЕЩЕНИЯ -->
+          <div class="quiz-step hidden space-y-5" data-step="2">
+            <label class="block text-base font-semibold text-brand-forest">
+              Какой вариант размещения вам ближе по духу?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              
+              <label class="border-2 border-brand-parchment rounded-2xl p-4 cursor-pointer hover:border-brand-terracotta transition flex flex-col justify-between has-[:checked]:border-brand-terracotta has-[:checked]:bg-brand-sand/50">
+                <input type="radio" name="accommodationType" value="aframe" checked class="sr-only">
+                <div>
+                  <span class="text-2xl mb-2 block">🏕️</span>
+                  <div class="font-bold text-brand-forest">A-Frame домик</div>
+                  <div class="text-xs text-brand-wood mt-1">2–4 человека, у реки с террасой</div>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-brand-terracotta">от 8 500 ₽/сут</div>
+              </label>
+
+              <label class="border-2 border-brand-parchment rounded-2xl p-4 cursor-pointer hover:border-brand-terracotta transition flex flex-col justify-between has-[:checked]:border-brand-terracotta has-[:checked]:bg-brand-sand/50">
+                <input type="radio" name="accommodationType" value="manor" class="sr-only">
+                <div>
+                  <span class="text-2xl mb-2 block">🏰</span>
+                  <div class="font-bold text-brand-forest">Дом Пастора</div>
+                  <div class="text-xs text-brand-wood mt-1">Для большой семьи или компании до 14 чел</div>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-brand-terracotta">от 25 000 ₽/сут</div>
+              </label>
+
+              <label class="border-2 border-brand-parchment rounded-2xl p-4 cursor-pointer hover:border-brand-terracotta transition flex flex-col justify-between has-[:checked]:border-brand-terracotta has-[:checked]:bg-brand-sand/50">
+                <input type="radio" name="accommodationType" value="room" class="sr-only">
+                <div>
+                  <span class="text-2xl mb-2 block">🛏️</span>
+                  <div class="font-bold text-brand-forest">Отдельный номер</div>
+                  <div class="text-xs text-brand-wood mt-1">Комната в историческом особняке</div>
+                </div>
+                <div class="mt-4 text-xs font-semibold text-brand-terracotta">от 5 000 ₽/сут</div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- ШАГ 3: КОЛИЧЕСТВО ГОСТЕЙ И ПИТОМЦЫ -->
+          <div class="quiz-step hidden space-y-5" data-step="3">
+            <label class="block text-base font-semibold text-brand-forest">
+              Сколько вас будет? Планируете ли взять пушистых друзей?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Количество взрослых и детей</label>
+                <select id="guestCount" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta">
+                  <option value="1">1 человек (ретрит наедине)</option>
+                  <option value="2" selected>2 человека (романтический отдых)</option>
+                  <option value="3-4">3–4 человека (семья или друзья)</option>
+                  <option value="5+">5+ человек (большая компания)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Питомцы (Pet-Friendly)</label>
+                <select id="petsOption" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta">
+                  <option value="no">Без животных</option>
+                  <option value="dog">Да, с собакой (мы любим добрых пёселей)</option>
+                  <option value="cat">С котиком</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="p-3 bg-brand-sand/60 rounded-xl text-xs text-brand-wood flex items-center gap-2">
+              <span>🐾</span>
+              <span>Мы искренне Dog-Friendly! В усадьбе есть место для прогулок и купания.</span>
+            </div>
+          </div>
+
+          <!-- ШАГ 4: ЧТО ВАМ ИНТЕРЕСНО -->
+          <div class="quiz-step hidden space-y-5" data-step="4">
+            <label class="block text-base font-semibold text-brand-forest">
+              Что для вас важно включить в программу отдыха?
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <label class="flex items-center gap-3 p-3 bg-white border border-brand-parchment rounded-xl cursor-pointer hover:bg-brand-sand/40">
+                <input type="checkbox" name="preferences" value="banya" class="rounded text-brand-terracotta focus:ring-brand-terracotta w-5 h-5">
+                <span class="text-sm text-brand-wood">Русская баня на сваях и дубовые веники</span>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 bg-white border border-brand-parchment rounded-xl cursor-pointer hover:bg-brand-sand/40">
+                <input type="checkbox" name="preferences" value="chan" class="rounded text-brand-terracotta focus:ring-brand-terracotta w-5 h-5">
+                <span class="text-sm text-brand-wood">Горячий чан на открытом воздухе с травами</span>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 bg-white border border-brand-parchment rounded-xl cursor-pointer hover:bg-brand-sand/40">
+                <input type="checkbox" name="preferences" value="boats" class="rounded text-brand-terracotta focus:ring-brand-terracotta w-5 h-5">
+                <span class="text-sm text-brand-wood">Прогулки на лодке и сап-бордах до залива</span>
+              </label>
+
+              <label class="flex items-center gap-3 p-3 bg-white border border-brand-parchment rounded-xl cursor-pointer hover:bg-brand-sand/40">
+                <input type="checkbox" name="preferences" value="bbq" class="rounded text-brand-terracotta focus:ring-brand-terracotta w-5 h-5">
+                <span class="text-sm text-brand-wood">Гриль, барбекю и ужин у костровища</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- ШАГ 5: ВАШИ КОНТАКТЫ И СОЦСЕТИ -->
+          <div class="quiz-step hidden space-y-5" data-step="5">
+            <label class="block text-base font-semibold text-brand-forest">
+              Финальный шаг: представьтесь и оставьте контакт
+            </label>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Ваше имя *</label>
+                <input type="text" id="guestName" required placeholder="Например: Алина" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta">
+              </div>
+
+              <div>
+                <label class="block text-xs font-medium text-gray-500 mb-1">Номер телефона / WhatsApp / Telegram *</label>
+                <input type="tel" id="guestPhone" required placeholder="+7 (999) 000-00-00" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-gray-500 mb-1">Ссылка на соцсеть (Instagram, Telegram, VK)</label>
+              <input type="text" id="guestSocial" placeholder="@username или ссылка" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-3 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta">
+              <span class="text-[11px] text-gray-500 mt-1 block">Мы любим заранее знать наших гостей в лицо, чтобы приготовить вам сюрприз.</span>
+            </div>
+
+            <div>
+              <label class="block text-xs font-medium text-gray-500 mb-1">Пожелания или вопрос к Барминым</label>
+              <textarea id="guestComments" rows="2" placeholder="Хотим отметить день рождения / нужен тихий коворкинг..." class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-2.5 text-brand-charcoal focus:ring-2 focus:ring-brand-terracotta text-sm"></textarea>
+            </div>
+          </div>
+
+          <!-- Кнопки управления квизом -->
+          <div class="flex items-center justify-between pt-6 border-t border-brand-parchment mt-6">
+            <button type="button" id="quizPrevBtn" onclick="navigateQuiz(-1)" class="invisible px-5 py-2.5 rounded-full text-sm font-semibold text-brand-wood hover:bg-brand-sand transition">
+              ← Назад
+            </button>
+
+            <button type="button" id="quizNextBtn" onclick="navigateQuiz(1)" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white px-7 py-3 rounded-full text-sm font-semibold transition shadow-md">
+              Далее →
+            </button>
+
+            <button type="submit" id="quizSubmitBtn" class="hidden bg-emerald-700 hover:bg-emerald-800 text-white px-8 py-3 rounded-full text-sm font-semibold transition shadow-lg">
+              Отправить заявку на визу ✨
+            </button>
+          </div>
+
+        </form>
+
+        <!-- Блок благодарности после отправки (Hidden по умолчанию) -->
+        <div id="quizSuccessBlock" class="hidden text-center py-10 space-y-4">
+          <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto text-3xl font-bold">
+            ✓
+          </div>
+          <h3 class="font-serif text-3xl font-bold text-brand-forest">Заявка на визу принята!</h3>
+          <p class="text-brand-wood max-w-md mx-auto text-base">
+            Спасибо! Мы уже получили вашу анкету. Ксения или наш управляющий напишет вам в мессенджер в течение 2-х часов, подтвердит даты и согласует все детали.
+          </p>
+          <div class="pt-4">
+            <button onclick="resetQuiz()" class="text-sm font-semibold text-brand-terracotta hover:underline">
+              Заполнить ещё одну заявку
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ГАЛЕРЕЯ АТМОСФЕРЫ -->
+  <section class="py-20 bg-brand-sand border-b border-brand-parchment">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Фотоплёнка</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest mt-1">
+            Атмосфера в деталях
+          </h2>
+        </div>
+        <p class="text-brand-wood text-sm sm:text-base max-w-md mt-4 md:mt-0">
+          Нажмите на любую фотографию, чтобы открыть её во весь экран. В реальности здесь ещё уютнее.
+        </p>
+      </div>
+
+      <!-- Сетка картинок с лайтбоксом -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80', 'Фасад Пасторского дома на закате')">
+          <img 
+            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80" 
+            alt="Фасад Пасторского дома" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/243E36/FFFFFF?text=Manor+House'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=1200&q=80', 'A-Frame домики на берегу канала')">
+          <img 
+            src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=600&q=80" 
+            alt="A-Frame на рассвете" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/C15C3D/FFFFFF?text=A-Frame+Morning'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80', 'Уютная гостиная с камином и антиквариатом')">
+          <img 
+            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" 
+            alt="Гостиная с камином" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/3D2F28/FFFFFF?text=Living+Room'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80', 'Горячий банный чан под кронами деревьев')">
+          <img 
+            src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" 
+            alt="Банный чан в Постникене" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/243E36/FFFFFF?text=Hot+Tub'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=1200&q=80', 'Катание на лодке по водному каналу к заливу')">
+          <img 
+            src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&w=600&q=80" 
+            alt="Лодка на канале" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/3D2F28/FFFFFF?text=Boat+Ride'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1200&q=80', 'Интерьер панорамной сауны')">
+          <img 
+            src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=600&q=80" 
+            alt="Интерьер сауны" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/C15C3D/FFFFFF?text=Sauna+Interior'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80', 'Вечерний костёр и тёплые душевные разговоры')">
+          <img 
+            src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=600&q=80" 
+            alt="Костёр в Постникене" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/172B25/FFFFFF?text=Bonfire+Gathering'"
+          />
+        </div>
+
+        <div class="overflow-hidden rounded-2xl cursor-pointer group h-64 shadow" onclick="openLightbox('https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80', 'Завтрак с домашней выпечкой и янтарным мёдом')">
+          <img 
+            src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" 
+            alt="Завтрак в усадьбе" 
+            class="w-full h-full object-cover group-hover:scale-110 transition duration-500"
+            onerror="this.src='https://placehold.co/600x600/3D2F28/FFFFFF?text=Breakfast+Tea'"
+          />
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: КАК ДОБРАТЬСЯ (КАРТА И ЛОКАЦИЯ) -->
+  <section id="contacts" class="py-20 sm:py-28 texture-paper">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Локация</span>
+          <h2 class="font-serif text-3xl sm:text-5xl font-bold text-brand-forest">
+            Как добраться в Постникен
+          </h2>
+          <p class="text-brand-wood text-base leading-relaxed">
+            Мы находимся в посёлке Заливное (историческое название Постникен / Postnicken), Гурьевский район Калининградской области.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <div class="p-4 bg-brand-cream border border-brand-parchment rounded-2xl shadow-sm">
+              <div class="font-bold text-brand-forest">🚗 На автомобиле или такси</div>
+              <div class="text-sm text-brand-wood mt-1">
+                • 25 минут от международного аэропорта Храброво (KGD)<br>
+                • 35 минут от центра Калининграда (Северный вокзал)<br>
+                • Асфальтированная живописная дорога до самых ворот усадьбы
+              </div>
+            </div>
+
+            <div class="p-4 bg-brand-cream border border-brand-parchment rounded-2xl shadow-sm">
+              <div class="font-bold text-brand-forest">🚤 По воде</div>
+              <div class="text-sm text-brand-wood mt-1">
+                Выход в Куршский залив по нашему водному каналу. У нас есть причал для лодок и катеров.
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a 
+              href="https://yandex.ru/maps/?text=Постникен+Заливное" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-brand-forest hover:bg-brand-forestDark text-white px-6 py-3 rounded-full text-sm font-semibold transition shadow"
+            >
+              <span>Построить маршрут на Яндекс Картах</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Интерактивный блок / визуал карты -->
+        <div class="lg:col-span-7">
+          <div class="bg-brand-forest text-brand-cream rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden">
+            
+            <div class="flex justify-between items-center mb-6 border-b border-brand-cream/15 pb-4">
+              <div>
+                <h3 class="font-serif text-2xl font-bold text-amber-200">Координаты имения</h3>
+                <p class="text-xs text-brand-parchment/70 font-mono mt-0.5">54.91234° N, 20.65432° E</p>
+              </div>
+              <span class="bg-emerald-500/20 text-emerald-300 text-xs px-3 py-1 rounded-full border border-emerald-400/30">Парковка бесплатная</span>
+            </div>
+
+            <!-- Имитация картографической схемы -->
+            <div class="relative bg-brand-forestDark/80 rounded-2xl h-80 overflow-hidden border border-brand-parchment/20 flex items-center justify-center">
+              <div class="absolute inset-0 opacity-30 bg-[radial-gradient(#C15C3D_1px,transparent_1px)] [background-size:16px_16px]"></div>
+              
+              <!-- Маркер точки Постникен -->
+              <div class="relative z-10 text-center animate-bounce">
+                <div class="w-12 h-12 rounded-full bg-brand-terracotta border-4 border-white flex items-center justify-center text-white mx-auto shadow-xl">
+                  📍
+                </div>
+                <div class="mt-2 bg-brand-cream text-brand-forest font-bold text-xs px-3 py-1 rounded-full shadow-lg">
+                  Постникен (Pfarrhaus)
+                </div>
+              </div>
+
+              <!-- Вспомогательные маркеры расстояний -->
+              <div class="absolute top-6 left-6 text-xs text-brand-parchment/80 bg-brand-forest/90 px-3 py-1.5 rounded-lg border border-brand-parchment/20">
+                ✈️ Аэропорт Храброво: ~28 км
+              </div>
+              <div class="absolute bottom-6 right-6 text-xs text-brand-parchment/80 bg-brand-forest/90 px-3 py-1.5 rounded-lg border border-brand-parchment/20">
+                🌊 Куршский залив: ~800 м
+              </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-parchment/80">
+              <div>Адрес: Калининградская область, Гурьевский район, посёлок Заливное</div>
+              <button onclick="copyAddress()" class="underline hover:text-white transition">Скопировать точный адрес</button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- СЕКЦИЯ: ЧАСТЫЕ ВОПРОСЫ (FAQ) -->
+  <section class="py-20 bg-brand-sand border-b border-brand-parchment">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-brand-terracotta text-sm font-semibold tracking-widest uppercase">Ответы на вопросы</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-forest mt-1">
+          Всё, о чём часто спрашивают
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        
+        <details class="bg-brand-cream border border-brand-parchment rounded-2xl p-5 group open:ring-1 open:ring-brand-terracotta transition">
+          <summary class="font-semibold text-brand-forest cursor-pointer list-none flex justify-between items-center text-lg">
+            <span>Что такое «Виза в Постникен» и зачем её оформлять?</span>
+            <span class="text-brand-terracotta group-open:rotate-180 transition transform">▼</span>
+          </summary>
+          <p class="text-brand-wood text-sm sm:text-base mt-3 pt-3 border-t border-brand-parchment leading-relaxed">
+            Виза в Постникен — это наш тёплый игровой формат знакомства с гостями. Мы не являемся безликим транзитным мотелем, а создаём закрытое душевное комьюнити ценителей природы, тишины и истории. Заполняя заявку, вы делитесь своими пожеланиями, а мы подготавливаем усадьбу персонально под ваш приезд.
+          </p>
+        </details>
+
+        <details class="bg-brand-cream border border-brand-parchment rounded-2xl p-5 group open:ring-1 open:ring-brand-terracotta transition">
+          <summary class="font-semibold text-brand-forest cursor-pointer list-none flex justify-between items-center text-lg">
+            <span>Можно ли приехать с собакой?</span>
+            <span class="text-brand-terracotta group-open:rotate-180 transition transform">▼</span>
+          </summary>
+          <p class="text-brand-wood text-sm sm:text-base mt-3 pt-3 border-t border-brand-parchment leading-relaxed">
+            Да! Мы на 100% Pet-Friendly. Главное — чтобы ваш питомец был дружелюбным к другим гостям и не тревожил местную флору и фауну. Пожалуйста, укажите наличие питомца при заполнении заявки на визу.
+          </p>
+        </details>
+
+        <details class="bg-brand-cream border border-brand-parchment rounded-2xl p-5 group open:ring-1 open:ring-brand-terracotta transition">
+          <summary class="font-semibold text-brand-forest cursor-pointer list-none flex justify-between items-center text-lg">
+            <span>Как организовано питание? Есть ли ресторан?</span>
+            <span class="text-brand-terracotta group-open:rotate-180 transition transform">▼</span>
+          </summary>
+          <p class="text-brand-wood text-sm sm:text-base mt-3 pt-3 border-t border-brand-parchment leading-relaxed">
+            В каждом А-фрейме есть полностью оборудованная кухня (плита, посуда, холодильник, турка, чайник) и мангальная зона на террасе. В пасторском доме — большая общая столовая с русской печью. Также мы угощаем гостей фермерскими сырами, домашним хлебом, мёдом и чаем из самовара.
+          </p>
+        </details>
+
+        <details class="bg-brand-cream border border-brand-parchment rounded-2xl p-5 group open:ring-1 open:ring-brand-terracotta transition">
+          <summary class="font-semibold text-brand-forest cursor-pointer list-none flex justify-between items-center text-lg">
+            <span>Какое время заезда и выезда?</span>
+            <span class="text-brand-terracotta group-open:rotate-180 transition transform">▼</span>
+          </summary>
+          <p class="text-brand-wood text-sm sm:text-base mt-3 pt-3 border-t border-brand-parchment leading-relaxed">
+            Стандартное время заезда — с 15:00, выезда — до 12:00. Если вам нужен ранний заезд или поздний выезд, сообщите нам при бронировании — мы всегда идём навстречу при наличии свободных номеров.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ПОДВАЛ (FOOTER) -->
+  <footer class="bg-brand-charcoal text-brand-cream pt-16 pb-12 border-t-4 border-brand-terracotta">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+        
+        <div class="space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-terracotta flex items-center justify-center font-serif text-xl font-bold">
+              P
+            </div>
+            <div>
+              <span class="block font-serif text-xl font-bold tracking-wider">ПОСТНИКЕН</span>
+              <span class="block text-[10px] tracking-widest text-brand-parchment uppercase">Ретротерапия для души</span>
+            </div>
+          </div>
+          <p class="text-xs text-brand-parchment/70 leading-relaxed">
+            Историческая усадьба 1860 года и эко-курорт в Калининградской области. Восстановлено с любовью семьёй Барминых.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-lg font-bold text-amber-200 mb-4">Навигация</h4>
+          <ul class="space-y-2 text-xs text-brand-parchment/80">
+            <li><a href="#about" class="hover:text-brand-terracotta transition">О проекте Барминых</a></li>
+            <li><a href="#houses" class="hover:text-brand-terracotta transition">Дом пастора и А-фреймы</a></li>
+            <li><a href="#spa" class="hover:text-brand-terracotta transition">Баня на сваях и чаны</a></li>
+            <li><a href="#history" class="hover:text-brand-terracotta transition">Хроника реставрации</a></li>
+            <li><a href="#visa" class="hover:text-brand-terracotta transition">Оформить визу</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-lg font-bold text-amber-200 mb-4">Контакты</h4>
+          <ul class="space-y-2 text-xs text-brand-parchment/80">
+            <li>Калининградская обл., Гурьевский р-н, пос. Заливное</li>
+            <li>Тел: <a href="tel:+79990000000" class="hover:text-brand-terracotta transition">+7 (999) 000-00-00</a></li>
+            <li>Мессенджеры: Telegram / WhatsApp</li>
+            <li>Email: <a href="mailto:welcome@postnicken.ru" class="hover:text-brand-terracotta transition">welcome@postnicken.ru</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-serif text-lg font-bold text-amber-200 mb-4">Сообщество</h4>
+          <p class="text-xs text-brand-parchment/70 mb-4">
+            Следите за новыми историями, видео со стройки и жизнью усадьбы в наших соцсетях:
+          </p>
+          <div class="flex gap-3">
+            <a href="https://t.me" target="_blank" class="w-9 h-9 rounded-full bg-brand-forest hover:bg-brand-terracotta flex items-center justify-center transition">
+              <span class="text-xs font-bold">TG</span>
+            </a>
+            <a href="https://vk.com" target="_blank" class="w-9 h-9 rounded-full bg-brand-forest hover:bg-brand-terracotta flex items-center justify-center transition">
+              <span class="text-xs font-bold">VK</span>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="w-9 h-9 rounded-full bg-brand-forest hover:bg-brand-terracotta flex items-center justify-center transition">
+              <span class="text-xs font-bold">YT</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="border-t border-brand-parchment/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-brand-parchment/60">
+        <div>© 2020–2026 Усадьба «Постникен». Все права защищены.</div>
+        <div class="flex gap-6">
+          <a href="#" class="hover:text-brand-cream transition">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-brand-cream transition">Правила дома</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- МОДАЛЬНОЕ ОКНО: БЫСТРАЯ ЗАЯВКА НА ВИЗУ -->
+  <div id="visaModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeModalOnBackdrop(event, 'visaModal')">
+    <div class="bg-brand-cream rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border-2 border-brand-parchment relative" onclick="event.stopPropagation()">
+      <button onclick="closeModal('visaModal')" class="absolute top-4 right-4 text-gray-400 hover:text-brand-charcoal text-2xl font-bold">&times;</button>
+      
+      <span class="text-brand-terracotta text-xs font-bold tracking-widest uppercase">Быстрое бронирование</span>
+      <h3 class="font-serif text-2xl font-bold text-brand-forest mt-1" id="modalBookingTitle">Виза в Постникен</h3>
+      <p class="text-xs text-brand-wood mt-1 mb-6">Оставьте контакт, и мы свяжемся с вами в течение часа для уточнения доступных дат.</p>
+
+      <form onsubmit="handleQuickVisaSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1">Ваше имя</label>
+          <input type="text" required placeholder="Как к вам обращаться?" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-terracotta">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1">Телефон или Telegram</label>
+          <input type="tel" required placeholder="+7 (999) 000-00-00" class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-2.5 text-sm focus:ring-2 focus:ring-brand-terracotta">
+        </div>
+        <div>
+          <label class="block text-xs font-medium text-gray-600 mb-1">Желаемые даты или пожелания</label>
+          <textarea rows="2" placeholder="Например: А-фрейм на 2 ночи в эти выходные..." class="w-full bg-white border border-brand-parchment rounded-xl px-4 py-2 text-sm focus:ring-2 focus:ring-brand-terracotta"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-brand-terracotta hover:bg-brand-terracottaDark text-white py-3 rounded-full font-semibold text-sm transition shadow-md">
+          Отправить заявку
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО: ВИДЕОТУР -->
+  <div id="videoModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeModalOnBackdrop(event, 'videoModal')">
+    <div class="bg-black rounded-3xl max-w-4xl w-full p-2 sm:p-4 shadow-2xl relative" onclick="event.stopPropagation()">
+      <button onclick="closeVideoTour()" class="absolute -top-12 right-2 text-white text-3xl font-bold hover:text-brand-terracotta">&times;</button>
+      
+      <div class="video-container rounded-2xl overflow-hidden bg-brand-charcoal">
+        <!-- Видео фрейм. Вы можете вставить YouTube ID, Rutube или прямой .mp4 файл в атрибут src -->
+        <iframe 
+          id="videoTourIframe" 
+          src="" 
+          title="Видеотур Постникен" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="p-3 text-center text-xs text-brand-parchment/70">
+        Усадьба Постникен (Postnicken) • Реставрация пасторского дома и отдых в Заливном
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО: ЛАЙТБОКС (LIGHTBOX ДЛЯ ФОТО) -->
+  <div id="lightboxModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 modal-backdrop" onclick="closeLightbox()">
+    <div class="relative max-w-5xl max-h-[90vh] flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-12 right-0 text-white text-3xl font-bold hover:text-brand-terracotta">&times;</button>
+      <img id="lightboxImage" src="" alt="Постникен Фото" class="max-w-full max-h-[80vh] rounded-2xl object-contain shadow-2xl border-2 border-white/20">
+      <p id="lightboxCaption" class="text-white text-sm mt-3 font-serif italic text-center"></p>
+    </div>
+  </div>
+
+  <!-- ВСПЛЫВАЮЩИЙ БАННЕР COOKIES В ДУШЕВНОМ ТОНЕ -->
+  <div id="cookieBanner" class="fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-40 bg-brand-cream border-2 border-brand-forest p-5 rounded-2xl shadow-2xl flex flex-col gap-3">
+    <div class="flex items-start gap-3">
+      <span class="text-2xl">🍪</span>
+      <p class="text-xs text-brand-wood leading-relaxed">
+        Мы, возможно, используем cookies. Не для слежки, а чтобы сайт запоминал ваши выбранные даты визы в Постникен и работал душевно.
+      </p>
+    </div>
+    <div class="flex items-center justify-end gap-3 pt-1">
+      <button onclick="acceptCookies()" class="bg-brand-forest hover:bg-brand-forestDark text-white px-5 py-2 rounded-full text-xs font-semibold transition">
+        Хорошо, согласен
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // -------------------------------------------------------------
+    // 1. Мобильное меню
+    // -------------------------------------------------------------
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // 2. Интерактивный квиз «Виза в Постникен» (5 шагов)
+    // -------------------------------------------------------------
+    let currentStep = 1;
+    const totalSteps = 5;
+
+    const stepTitles = [
+      "Шаг 1 из 5: Даты визита",
+      "Шаг 2 из 5: Выбор размещения",
+      "Шаг 3 из 5: Количество гостей и питомцы",
+      "Шаг 4 из 5: Программа и пожелания",
+      "Шаг 5 из 5: Контакты и соцсети"
+    ];
+
+    function updateQuizUI() {
+      // Скрытие/показ шагов
+      document.querySelectorAll('.quiz-step').forEach(stepEl => {
+        const stepNum = parseInt(stepEl.getAttribute('data-step'), 10);
+        if (stepNum === currentStep) {
+          stepEl.classList.remove('hidden');
+        } else {
+          stepEl.classList.add('hidden');
+        }
+      });
+
+      // Обновление прогресс-бара и текста
+      document.getElementById('quizStepText').textContent = stepTitles[currentStep - 1];
+      const percent = Math.round((currentStep / totalSteps) * 100);
+      document.getElementById('quizPercentText').textContent = percent + '%';
+      document.getElementById('quizProgressBar').style.width = percent + '%';
+
+      // Кнопка Назад
+      const prevBtn = document.getElementById('quizPrevBtn');
+      if (currentStep === 1) {
+        prevBtn.classList.add('invisible');
+      } else {
+        prevBtn.classList.remove('invisible');
+      }
+
+      // Кнопки Далее / Отправить
+      const nextBtn = document.getElementById('quizNextBtn');
+      const submitBtn = document.getElementById('quizSubmitBtn');
+      if (currentStep === totalSteps) {
+        nextBtn.classList.add('hidden');
+        submitBtn.classList.remove('hidden');
+      } else {
+        nextBtn.classList.remove('hidden');
+        submitBtn.classList.add('hidden');
+      }
+    }
+
+    function navigateQuiz(direction) {
+      if (direction === 1) {
+        // Валидация текущего шага
+        if (currentStep === 1) {
+          const inDate = document.getElementById('checkInDate').value;
+          const outDate = document.getElementById('checkOutDate').value;
+          if (!inDate || !outDate) {
+            showNotice("Пожалуйста, укажите даты заезда и выезда");
+            return;
+          }
+        }
+        if (currentStep < totalSteps) {
+          currentStep++;
+          updateQuizUI();
+        }
+      } else if (direction === -1) {
+        if (currentStep > 1) {
+          currentStep--;
+          updateQuizUI();
+        }
+      }
+    }
+
+    function setQuickDates(days) {
+      const today = new Date();
+      const inDate = new Date(today);
+      inDate.setDate(today.getDate() + 2); // через 2 дня
+      const outDate = new Date(inDate);
+      outDate.setDate(inDate.getDate() + days);
+
+      document.getElementById('checkInDate').value = inDate.toISOString().split('T')[0];
+      document.getElementById('checkOutDate').value = outDate.toISOString().split('T')[0];
+    }
+
+    // Инициализация дат по умолчанию на ближайший уикенд
+    setQuickDates(2);
+
+    function handleVisaSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value;
+      const phone = document.getElementById('guestPhone').value;
+
+      if (!name || !phone) {
+        showNotice("Пожалуйста, заполните имя и телефон");
+        return;
+      }
+
+      // Скрываем форму и показываем экран успеха
+      document.getElementById('visaQuizForm').classList.add('hidden');
+      document.getElementById('quizSuccessBlock').classList.remove('hidden');
+    }
+
+    function resetQuiz() {
+      currentStep = 1;
+      updateQuizUI();
+      document.getElementById('visaQuizForm').reset();
+      setQuickDates(2);
+      document.getElementById('visaQuizForm').classList.remove('hidden');
+      document.getElementById('quizSuccessBlock').classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // 3. Модальные окна (Виза, Видеотур, Лайтбокс)
+    // -------------------------------------------------------------
+    function openModal(modalId, titlePrefix) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        if (titlePrefix && modalId === 'visaModal') {
+          document.getElementById('modalBookingTitle').textContent = 'Виза: ' + titlePrefix;
+        }
+        modal.classList.remove('hidden');
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('hidden');
+      }
+    }
+
+    function closeModalOnBackdrop(e, modalId) {
+      if (e.target.id === modalId) {
+        closeModal(modalId);
+      }
+    }
+
+    function handleQuickVisaSubmit(e) {
+      e.preventDefault();
+      closeModal('visaModal');
+      showNotice("Заявка успешно принята! Мы скоро свяжемся с вами.");
+    }
+
+    // Видеоплеер тур
+    function openVideoTour() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoTourIframe');
+      // Вставляем демонстрационное атмосферное видео
+      // При желании вы можете указать собственный YouTube / Rutube embed URL
+      iframe.src = "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1"; 
+      modal.classList.remove('hidden');
+    }
+
+    function closeVideoTour() {
+      const modal = document.getElementById('videoModal');
+      const iframe = document.getElementById('videoTourIframe');
+      iframe.src = "";
+      modal.classList.add('hidden');
+    }
+
+    // Лайтбокс изображений
+    function openLightbox(imgUrl, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImage');
+      const cap = document.getElementById('lightboxCaption');
+      img.src = imgUrl;
+      cap.textContent = caption || '';
+      modal.classList.remove('hidden');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightboxModal').classList.add('hidden');
+    }
+
+    // -------------------------------------------------------------
+    // 4. Баннер Cookies и Уведомления
+    // -------------------------------------------------------------
+    function acceptCookies() {
+      document.getElementById('cookieBanner').style.display = 'none';
+      try {
+        localStorage.setItem('postnicken_cookie_accepted', 'true');
+      } catch (e) {}
+    }
+
+    if (localStorage.getItem('postnicken_cookie_accepted') === 'true') {
+      document.getElementById('cookieBanner').style.display = 'none';
+    }
+
+    function copyAddress() {
+      const text = "Калининградская область, Гурьевский район, посёлок Заливное, усадьба Постникен";
+      const tempInput = document.createElement("input");
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      showNotice("Адрес скопирован в буфер обмена!");
+    }
+
+    // Всплывающее красивое уведомление (замена стандартного alert)
+    function showNotice(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-brand-forest text-brand-cream px-6 py-3 rounded-full shadow-2xl text-sm font-medium border border-brand-brass transition-all transform duration-300';
+      toast.textContent = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
